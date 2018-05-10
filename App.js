@@ -18,13 +18,13 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={{width:50, height:50, backgroundColor:'#cd5244'}}>
+        </View>
         <Button
           onPress={this.onPressLearnMore}
           title="Learn More"
           color={this.state.color}
           accessibilityLabel="Learn more about this purple button"
         />
-        </View>
       </View>
     );
   }
