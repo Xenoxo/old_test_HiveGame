@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       color:"#841584",
+      playPiece:[],
     }
   }
   
@@ -16,19 +17,26 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      ////style={styles.container}
+      <View> 
         <View style={{width:50, height:50, backgroundColor:'#cd5244'}}>
         </View>
-        <Button
+        <TouchableOpacity
+          style={{backgroundColor: "red", padding: 20, width:50, height:50, position: "absolute", right: 50}} 
           onPress={this.onPressLearnMore}
-          title="Learn More"
-          color={this.state.color}
-          accessibilityLabel="Learn more about this purple button"
-        />
+        >
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{backgroundColor: "blue", padding: 20, width:50, height:50, position: "absolute", right: 50, top: 50}} 
+          onPress={this.onPressLearnMore}
+        >        
+          <Text>X</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
