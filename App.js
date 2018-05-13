@@ -65,23 +65,29 @@ export default class App extends React.Component {
         />          
         </Svg>
        <Svg
-        height="100"
-        width="100">
+        height="200"
+        width="200">
           <Rect
             x="0"
             y="0"
-            width="100"
-            height="100"
+            width="200"
+            height="200"
             stroke="red"
-            strokeWidth="20"
+            strokeWidth="0"
             fill="grey"
-          />
+          /> 
         <Polygon
-          points="40,5 80,5 80,55 40,55"
+        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
+          points="40,5 57,5 65,20 57,35 40,35 32,20"
           fill="orange"
-          stroke="purple"
-          strokeWidth="1"
-        />          
+          scale='2'
+        />
+        <Polygon
+        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
+          points="40,35 57,35 65,50 57,65 40,65 32,50"
+          fill="blue"
+          scale='2'
+        />        
         </Svg>        
         </View>
     );
