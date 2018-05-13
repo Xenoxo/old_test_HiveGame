@@ -22,7 +22,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color:"#841584",
+      color:"orange",
       playPiece:[],
     }
   }
@@ -78,16 +78,11 @@ export default class App extends React.Component {
           /> 
         <Polygon
         //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points="40,5 57,5 65,20 57,35 40,35 32,20"
-          fill="orange"
+          points="40,35 65,35 77.5,56.7 65,78.4 40,78.4 27.5,56.7"
+          fill={this.state.color}
           scale='2'
+          onPress={this.onPressLearnMore}
         />
-        <Polygon
-        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points="40,35 57,35 65,50 57,65 40,65 32,50"
-          fill="blue"
-          scale='2'
-        />        
         </Svg>        
         </View>
     );
