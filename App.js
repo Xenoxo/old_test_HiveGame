@@ -1,5 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Button, TouchableOpacity } from 'react-native';
+import Svg,{
+    Circle,
+    Ellipse,
+    G,
+    LinearGradient,
+    RadialGradient,
+    Line,
+    Path,
+    Polygon,
+    Polyline,
+    Rect,
+    Symbol,
+    Text,
+    Use,
+    Defs,
+    Stop
+} from 'react-native-svg';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -18,32 +35,55 @@ export default class App extends React.Component {
 
   render() {
     return (
-      ////style={styles.container}
-      <View> 
-        <View style={{width:50, height:50, backgroundColor:'#cd5244'}}>
+      <View>
+       <Svg
+        height="100"
+        width="100"
+        fill="green">
+          <Circle
+            cx="50"
+            cy="50"
+            r="45"
+            stroke="blue"
+            strokeWidth="2.5"
+            fill="green"
+          />
+          <Rect
+            x="15"
+            y="15"
+            width="70"
+            height="70"
+            stroke="red"
+            strokeWidth="2"
+            fill="yellow"
+          />
+        <Polygon
+          points="40,5 70,150  25,95"
+          fill="lime"
+          stroke="purple"
+          strokeWidth="1"
+        />          
+        </Svg>
+       <Svg
+        height="100"
+        width="100">
+          <Rect
+            x="0"
+            y="0"
+            width="100"
+            height="100"
+            stroke="red"
+            strokeWidth="20"
+            fill="grey"
+          />
+        <Polygon
+          points="40,5 80,5 80,55 40,55"
+          fill="orange"
+          stroke="purple"
+          strokeWidth="1"
+        />          
+        </Svg>        
         </View>
-        <TouchableOpacity
-          style={{backgroundColor: "red", padding: 20, width:50, height:50, position: "absolute", right: 50}} 
-          onPress={this.onPressLearnMore}
-        >
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{backgroundColor: "blue", padding: 20, width:50, height:50, position: "absolute", right: 50, top: 50}} 
-          onPress={this.onPressLearnMore}
-        >        
-          <Text>X</Text>
-        </TouchableOpacity>
-        <View style={styles.hexagon}>
-          <View style={styles.hexagonInner} />
-          <View style={styles.hexagonBefore} />
-          <View style={styles.hexagonAfter} />
-        </View>
-        <View style={styles.trapezoidTop} />
-        <View style={styles.trapezoidBot} />
-
-        
-        <Hex />
-      </View>
     );
   }
 }
