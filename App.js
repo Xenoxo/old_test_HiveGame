@@ -30,40 +30,19 @@ export default class App extends React.Component {
 
 
   onPressLearnMore = () => {
-    this.setState({color:"#cd5422"});
+    let newColor = "";
+    if(this.state.color === "#cd5422"){
+      newColor = "orange";
+    } else {
+      newColor = "#cd5422";
+    }
+    this.setState({color: newColor});
+    
   }
 
   render() {
     return (
       <View>
-       <Svg
-        height="100"
-        width="100"
-        fill="green">
-          <Circle
-            cx="50"
-            cy="50"
-            r="45"
-            stroke="blue"
-            strokeWidth="2.5"
-            fill="green"
-          />
-          <Rect
-            x="15"
-            y="15"
-            width="70"
-            height="70"
-            stroke="red"
-            strokeWidth="2"
-            fill="yellow"
-          />
-        <Polygon
-          points="40,5 70,150  25,95"
-          fill="lime"
-          stroke="purple"
-          strokeWidth="1"
-        />          
-        </Svg>
        <Svg
         height="200"
         width="200">
@@ -75,7 +54,7 @@ export default class App extends React.Component {
             stroke="red"
             strokeWidth="0"
             fill="grey"
-          /> 
+          />
         <Polygon
         //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
           points="40,35 65,35 77.5,56.7 65,78.4 40,78.4 27.5,56.7"
