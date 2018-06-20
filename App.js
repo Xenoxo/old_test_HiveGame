@@ -40,6 +40,20 @@ export default class App extends React.Component {
     
   }
 
+  centerHex() {
+    let baseCoords = [40,35,65,35,77.5,56.7,65,78.4,40,78.4,27.5,56.7];
+    let hexCoords = "";
+
+    for (var i = 0; i <= baseCoords.length - 1; i++) {
+      if(i%2 === 0)
+        hexCoords += baseCoords[i]+",";
+      else
+        hexCoords += baseCoords[i]+" ";
+    }
+    console.log(hexCoords);
+    return hexCoords;
+  }
+
   render() {
     return (
       <View>
@@ -57,11 +71,17 @@ export default class App extends React.Component {
           />
         <Polygon
         //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points="40,35 65,35 77.5,56.7 65,78.4 40,78.4 27.5,56.7"
+          points={this.centerHex()}
           fill={this.state.color}
           scale='2'
           onPress={this.onPressLearnMore}
         />
+        <Polygon
+        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
+          points="45,40 70,40 82.5,61.7 70,83.4 45,83.4 32.5,61.7"
+          fill={"blue"}
+          scale='2'
+        />        
         </Svg>        
         </View>
     );
