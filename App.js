@@ -15,8 +15,7 @@ import Svg,{
     Text,
     Use,
     Defs,
-    Stop
-} from 'react-native-svg';
+    Stop} from 'react-native-svg';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,8 +26,6 @@ export default class App extends React.Component {
       HEX_COORDS:[40,35,65,35,77.5,56.7,65,78.4,40,78.4,27.5,56.7],
     }
   }
-  
-
 
   onPressLearnMore = () => {
     let newColor = "";
@@ -67,9 +64,7 @@ export default class App extends React.Component {
         coordArray.push(y - apoth);
       }
     }
-    //90,180 
-    //90,180 145,180 172.5,125 145,70 90,70 62.5,125 
-    //console.log(coordArray);
+
     for (var i = 0; i <= coordArray.length - 1; i++) {
       if(i%2 === 0)
         hexCoords += coordArray[i]+",";
@@ -77,34 +72,6 @@ export default class App extends React.Component {
         hexCoords += coordArray[i]+" ";
     }
     console.log(hexCoords);
-    return hexCoords;
-  }
-
-  centerHex() {
-    let baseCoords = this.state.HEX_COORDS;
-    let hexCoords = "";
-
-    for (var i = 0; i <= baseCoords.length - 1; i++) {
-      if(i%2 === 0)
-        hexCoords += baseCoords[i]+",";
-      else
-        hexCoords += baseCoords[i]+" ";
-    }
-    // console.log(hexCoords);
-    return hexCoords;
-  }
-
-  movedHex(pixels){
-    let baseCoords = this.state.HEX_COORDS;
-    let hexCoords = "";
-
-    for (var i = 0; i <= baseCoords.length - 1; i++) {
-      if(i%2 === 0)
-        hexCoords += (baseCoords[i]+pixels)+",";
-      else
-        hexCoords += (baseCoords[i]+pixels)+" ";
-    }
-    // console.log(hexCoords);
     return hexCoords;
   }
 
@@ -122,22 +89,18 @@ export default class App extends React.Component {
           scale='1'
           //onPress={this.onPressLearnMore}
         />
+        <Polygon
+        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
+          points={this.generateHex(90,350,55)}
+          fill={this.state.color}
+          scale='1'
+          //onPress={this.onPressLearnMore}
+        />        
 
         </Svg>        
         </View>
     );
   }
-}
-
-export class Hex extends React.Component {
-  render() {
-    return (
-      <View> 
-        <View style={styles.trapezoidTop} />
-        <View style={styles.trapezoidBot} />        
-      </View>
-    );
-  }  
 }
 
 const styles = StyleSheet.create({
@@ -146,70 +109,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 
-trapezoidTop: {
-    width: 200,
-    backgroundColor:'green',
-    borderBottomWidth: 90,
-    borderBottomColor: 'black',
-    borderLeftWidth: 40,
-    borderLeftColor: 'transparent',
-    borderRightWidth: 40,
-    borderRightColor: 'transparent',
-    borderStyle: 'solid',
-    position: 'absolute',
-    top: 100,
-  },
-  trapezoidBot: {
-    width: 200,
-    height: 0,
-    borderTopWidth: 90,
-    borderTopColor: 'red',
-    borderLeftWidth: 40,
-    borderLeftColor: 'transparent',
-    borderRightWidth: 40,
-    borderRightColor: 'transparent',
-    borderStyle: 'solid', 
-    position: 'absolute',
-    top: 190,
-  },
-
-  hexagon: {
-    width: 100,
-    height: 55,
-  },
-  hexagonInner: {
-    width: 100,
-    height: 55,
-    backgroundColor: 'blue'
-  },
-  hexagonAfter: {
-    position: 'absolute',
-    bottom: -25,
-    left: 0,
-    width: 0,
-    height: 0,
-    borderStyle: 'solid',
-    borderLeftWidth: 50,
-    borderLeftColor: 'transparent',
-    borderRightWidth: 50,
-    borderRightColor: 'transparent',
-    borderTopWidth: 25,
-    borderTopColor: 'red'
-  },
-  hexagonBefore: {
-    position: 'absolute',
-    top: -25,
-    left: 0,
-    width: 0,
-    height: 0,
-    borderStyle: 'solid',
-    borderLeftWidth: 50,
-    borderLeftColor: 'transparent',
-    borderRightWidth: 50,
-    borderRightColor: 'transparent',
-    borderBottomWidth: 25,
-    borderBottomColor: 'red'
-  },
 });
