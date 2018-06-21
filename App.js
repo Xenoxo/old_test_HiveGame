@@ -74,13 +74,13 @@ export default class App extends React.Component {
     return (
       <View>
        <Svg
-        height="200"
-        width="200">
+        height="500"
+        width="400">
           <Rect
             x="0"
             y="0"
-            width="200"
-            height="200"
+            width="900"
+            height="900"
             stroke="red"
             strokeWidth="0"
             fill="grey"
@@ -97,7 +97,8 @@ export default class App extends React.Component {
           points={this.movedHex(15)}
           fill={"blue"}
           scale='2'
-        />        
+        />
+
         </Svg>        
         </View>
     );
