@@ -22,7 +22,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       color:"orange",
-      playPiece:[],
+      playPiece:{id:0, x:90, y:350, l:55},
       HEX_COORDS:[40,35,65,35,77.5,56.7,65,78.4,40,78.4,27.5,56.7],
     }
   }
@@ -36,6 +36,11 @@ export default class App extends React.Component {
     }
     this.setState({color: newColor});
     // this.generateHex(40,35,15);
+  }
+
+  showMoves = () => {
+    //var test = this.state.playPiece;
+    console.log(this.state.playPiece);
   }
 
   // given x,y,and length of a side, will generate and return the coords for a hex
@@ -84,20 +89,17 @@ export default class App extends React.Component {
         
         <Polygon
         //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points={this.generateHex(90,180,55)}
-          fill={this.state.color}
-          scale='1'
-          //onPress={this.onPressLearnMore}
-        />
-        <Polygon
-        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
           points={this.generateHex(90,350,55)}
           fill={this.state.color}
           scale='1'
-          //onPress={this.onPressLearnMore}
+          onPress={this.showMoves}
         />        
 
-        </Svg>        
+        </Svg> 
+        <Button
+          title="create"
+          onPress={this.showMoves}
+        />       
         </View>
     );
   }
