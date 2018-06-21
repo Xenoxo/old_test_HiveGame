@@ -38,10 +38,48 @@ export default class App extends React.Component {
       newColor = "#cd5422";
     }
     this.setState({color: newColor});
-    
+    // this.generateHex(40,35,15);
   }
 
-  // used to create the coordinates for hexagons
+  // given x,y,and length of a side, will generate and return the coords for a hex
+  generateHex(x,y,l){
+    let coordArray = [];
+    let hexCoords = "";
+    let apoth = (Math.sqrt(3)/2*l)
+    for (var i = 0; i <= 5; i++) {
+      if(i == 0){
+        coordArray.push(x);
+        coordArray.push(y);
+      } else if(i == 1){
+        coordArray.push(x+l);
+        coordArray.push(y);
+      }else if(i == 2){
+        coordArray.push(x + (1.5*l));
+        coordArray.push(y - apoth);
+      }else if(i == 3){
+        coordArray.push(x + l);
+        coordArray.push(y - (2*apoth));
+      }else if(i == 4){
+        coordArray.push(x);
+        coordArray.push(y - (2*apoth));
+      }else if(i == 5){
+        coordArray.push(x - (0.5*l));
+        coordArray.push(y - apoth);
+      }
+    }
+    //90,180 
+    //90,180 145,180 172.5,125 145,70 90,70 62.5,125 
+    //console.log(coordArray);
+    for (var i = 0; i <= coordArray.length - 1; i++) {
+      if(i%2 === 0)
+        hexCoords += coordArray[i]+",";
+      else
+        hexCoords += coordArray[i]+" ";
+    }
+    console.log(hexCoords);
+    return hexCoords;
+  }
+
   centerHex() {
     let baseCoords = this.state.HEX_COORDS;
     let hexCoords = "";
@@ -52,7 +90,7 @@ export default class App extends React.Component {
       else
         hexCoords += baseCoords[i]+" ";
     }
-    console.log(hexCoords);
+    // console.log(hexCoords);
     return hexCoords;
   }
 
@@ -66,8 +104,8 @@ export default class App extends React.Component {
       else
         hexCoords += (baseCoords[i]+pixels)+" ";
     }
-    console.log(hexCoords);
-    return hexCoords;    
+    // console.log(hexCoords);
+    return hexCoords;
   }
 
   render() {
@@ -76,27 +114,13 @@ export default class App extends React.Component {
        <Svg
         height="500"
         width="400">
-          <Rect
-            x="0"
-            y="0"
-            width="900"
-            height="900"
-            stroke="red"
-            strokeWidth="0"
-            fill="grey"
-          />
+        
         <Polygon
         //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points={this.centerHex()}
+          points={this.generateHex(90,180,55)}
           fill={this.state.color}
-          scale='2'
-          onPress={this.onPressLearnMore}
-        />
-        <Polygon
-        //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points={this.movedHex(15)}
-          fill={"blue"}
-          scale='2'
+          scale='1'
+          //onPress={this.onPressLearnMore}
         />
 
         </Svg>        
