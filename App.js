@@ -24,6 +24,7 @@ export default class App extends React.Component {
     this.state = {
       color:"orange",
       playPiece:[],
+      HEX_COORDS:[40,35,65,35,77.5,56.7,65,78.4,40,78.4,27.5,56.7],
     }
   }
   
@@ -40,8 +41,9 @@ export default class App extends React.Component {
     
   }
 
+  // used to create the coordinates for hexagons
   centerHex() {
-    let baseCoords = [40,35,65,35,77.5,56.7,65,78.4,40,78.4,27.5,56.7];
+    let baseCoords = this.state.HEX_COORDS;
     let hexCoords = "";
 
     for (var i = 0; i <= baseCoords.length - 1; i++) {
@@ -52,6 +54,20 @@ export default class App extends React.Component {
     }
     console.log(hexCoords);
     return hexCoords;
+  }
+
+  movedHex(pixels){
+    let baseCoords = this.state.HEX_COORDS;
+    let hexCoords = "";
+
+    for (var i = 0; i <= baseCoords.length - 1; i++) {
+      if(i%2 === 0)
+        hexCoords += (baseCoords[i]+pixels)+",";
+      else
+        hexCoords += (baseCoords[i]+pixels)+" ";
+    }
+    console.log(hexCoords);
+    return hexCoords;    
   }
 
   render() {
@@ -78,7 +94,7 @@ export default class App extends React.Component {
         />
         <Polygon
         //15 each side, for diag points use 7.5 across and 13 down while hypote = 15
-          points="45,40 70,40 82.5,61.7 70,83.4 45,83.4 32.5,61.7"
+          points={this.movedHex(15)}
           fill={"blue"}
           scale='2'
         />        
