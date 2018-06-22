@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyleSheet, View, Button, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
 import Svg,{
     Circle,
     Ellipse,
@@ -16,38 +15,15 @@ import Svg,{
     Use,
     Defs,
     Stop} from 'react-native-svg';
-import Hexagons from './Hexagons.js';
 
-export default class App extends React.Component {
+export default class Hexagons extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      color:"orange",
-      playPiece:{id:0, x:90, y:350, l:55},
-      HEX_COORDS:[40,35,65,35,77.5,56.7,65,78.4,40,78.4,27.5,56.7],
-    }
+      color: 'orange',
+    };
   }
-
-  onPressLearnMore = () => {
-    let newColor = "";
-    if(this.state.color === "#cd5422"){
-      newColor = "orange";
-    } else {
-      newColor = "#cd5422";
-    }
-    this.setState({color: newColor});
-    // this.generateHex(40,35,15);
-  }
-
-  showMoves = () => {
-    //var test = this.state.playPiece;
-
-    //each hex is stored in a database
-    console.log(this.state.playPiece);
-  }
-
-  // given x,y,and length of a side, will generate and return the coords for a hex
-  generateHex(x,y,l){
+ generateHex(x,y,l){
     let coordArray = [];
     let hexCoords = "";
     let apoth = (Math.sqrt(3)/2*l)
@@ -82,42 +58,15 @@ export default class App extends React.Component {
     console.log(hexCoords);
     return hexCoords;
   }
-
-  hexCreator(){
+  render() {
     return (
       <Polygon
         points={this.generateHex(90,350,55)}
         fill={this.state.color}
         scale='1'
         onPress={this.showMoves}
-      />);
-  }
-
-  render() {
-    return (
-      <View>
-       <Svg
-        height="500"
-        width="400">
-      
-      <Hexagons />
-
-        </Svg> 
-        <Button
-          title="create"
-          onPress={this.showMoves}
-        />       
-        </View>
+      />
     );
-  }
+  }    
+  
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-
-});
