@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Svg,{
     Circle,
     Ellipse,
@@ -16,57 +16,60 @@ import Svg,{
     Defs,
     Stop} from 'react-native-svg';
 
-export default class Hexagons extends Component{
+export default class Hexagons extends Component {
   constructor(props) {
     super(props);
     this.state = {
       color: 'orange',
     };
   }
- generateHex(x,y,l){
+
+  generateHex(x, y, l) {
     let coordArray = [];
-    let hexCoords = "";
-    let apoth = (Math.sqrt(3)/2*l)
-    for (var i = 0; i <= 5; i++) {
-      if(i == 0){
+    let hexCoords = '';
+    const apoth = (Math.sqrt(3) / (2 * l));
+    for (let i = 0; i <= 5; i + 1) {
+      if (i === 0) {
         coordArray.push(x);
         coordArray.push(y);
-      } else if(i == 1){
-        coordArray.push(x+l);
-        coordArray.push(y);
-      }else if(i == 2){
-        coordArray.push(x + (1.5*l));
-        coordArray.push(y - apoth);
-      }else if(i == 3){
+      } else if (i === 1) {
         coordArray.push(x + l);
-        coordArray.push(y - (2*apoth));
-      }else if(i == 4){
+        coordArray.push(y);
+      } else if (i === 2) {
+        coordArray.push(x + (1.5 * l));
+        coordArray.push(y - apoth);
+      } else if (i === 3) {
+        coordArray.push(x + l);
+        coordArray.push(y - (2 * apoth));
+      } else if (i === 4) {
         coordArray.push(x);
-        coordArray.push(y - (2*apoth));
-      }else if(i == 5){
-        coordArray.push(x - (0.5*l));
+        coordArray.push(y - (2 * apoth));
+      } else if (i === 5) {
+        coordArray.push(x - (0.5 * l));
         coordArray.push(y - apoth);
       }
     }
 
-    for (var i = 0; i <= coordArray.length - 1; i++) {
-      if(i%2 === 0)
-        hexCoords += coordArray[i]+",";
-      else
-        hexCoords += coordArray[i]+" ";
+    for (let i = 0; i <= coordArray.length - 1; i + 1) {
+      if (i % 2 === 0) {
+        hexCoords += '${coordArray[i]},';
+      } else {
+        hexCoords += coordArray[i] + ' ';
+      }
     }
     console.log(hexCoords);
     return hexCoords;
   }
+
+  
   render() {
     return (
       <Polygon
-        points={this.generateHex(90,350,55)}
+        points={this.generateHex(90, 350, 55)}
         fill={this.state.color}
-        scale='1'
+        scale="1"
         onPress={this.showMoves}
       />
     );
-  }    
-  
+  }
 }

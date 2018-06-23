@@ -16,7 +16,7 @@ import Svg,{
     Use,
     Defs,
     Stop} from 'react-native-svg';
-import Hexagons from './Hexagons.js';
+import Hexagons from './Hexagons';
 
 export default class App extends React.Component {
   constructor(props) {
